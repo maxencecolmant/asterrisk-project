@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "asteriskmaster" do |asteriskmaster|
     asteriskmaster.vm.box = "debian/stretch64"
     asteriskmaster.vm.hostname = 'asteriskmaster'
-    asteriskmaster.vm.provision :shell, path: "install_asterisk.sh"
+    asteriskmaster.vm.provision :shell, path: "install_asterisk_master.sh"
 
     asteriskmaster.vm.network :private_network, ip: "192.168.56.101"
 
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "asteriskslave" do |asteriskslave|
     asteriskslave.vm.box = "debian/stretch64"
     asteriskslave.vm.hostname = 'asteriskslave'
-    asteriskslave.vm.provision :shell, path: "install_asterisk.sh"
+    asteriskslave.vm.provision :shell, path: "install_asterisk_slave.sh"
 
     asteriskslave.vm.network :private_network, ip: "192.168.56.102"
 
