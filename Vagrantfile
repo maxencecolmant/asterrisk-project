@@ -22,7 +22,8 @@ Vagrant.configure("2") do |config|
     
     asteriskmaster.vm.provision "file", source: "./sip.conf", destination: "/tmp/sip.conf"
     asteriskmaster.vm.provision "shell",inline: "mv /tmp/sip.conf /etc/asterisk/sip.conf"
-
+    asteriskmaster.vm.provision :shell, path: "startall.sh"
+    
     asteriskmaster.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 1024]
@@ -52,7 +53,7 @@ Vagrant.configure("2") do |config|
     asteriskslave.vm.provision "file", source: "./ha.cf", destination: "/tmp/ha.cf"
     asteriskslave.vm.provision "shell",inline: "mv /tmp/ha.cf /etc/ha.d/ha.cf"
 
-   
+    asteriskslave.vm.provision :shell, path: "startall.sh"
 
     asteriskslave.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

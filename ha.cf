@@ -1,12 +1,10 @@
 bcast           eth1
 debugfile       /var/log/ha-debug
 logfile         /var/log/ha-log
-logfacility     local10
 keepalive       2
 deadtime        10
 warntime        6
 initdead        60
-undport         694
 node            asteriskmaster
 node            asteriskslave
 auto_failback   off
